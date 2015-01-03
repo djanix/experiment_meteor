@@ -1,0 +1,23 @@
+<template name="main">
+    {{#if currentUser}}
+        <p>hello, <strong>{{currentUser.username}}</strong></p>
+        <button>Click Me</button>
+        <p>You've pressed the button {{counter}} times.</p>
+
+        <div class="items">
+            <button class="item item1">item #1</button>
+            <button class="item item2">item #2</button>
+            <button class="item item3">item #3</button>
+            <button class="item item4">item #4</button>
+        </div>
+
+        <h3>Leaderboard:</h3>
+
+        {{#each scores}}
+            <strong>{{owner}}:</strong> {{score}}pts - {{time}}<br/>
+        {{/each}}
+    {{/if}}
+
+    <br/><br/>
+    {{> loginButtons}}
+</template>

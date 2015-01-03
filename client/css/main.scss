@@ -1,0 +1,11 @@
+/* CSS declarations go here */
+.items {
+    .item {
+        transition: all 0.2s;
+    }
+
+    .is-active {
+        background-color: darkgreen;
+        color: white;
+    }
+}
