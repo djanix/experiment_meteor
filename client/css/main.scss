@@ -1,4 +1,19 @@
-/* CSS declarations go here */
+@import "../../.meteor/local/build/programs/web.browser/packages/juliancwirko_zf5/scss/normalize.scss";
+@import "../../.meteor/local/build/programs/web.browser/packages/juliancwirko_zf5/scss/foundation/components/buttons.scss";
+@import "../../.meteor/local/build/programs/web.browser/packages/juliancwirko_zf5/scss/foundation/components/forms.scss";
+@import "../../.meteor/local/build/programs/web.browser/packages/juliancwirko_zf5/scss/foundation/components/inline-lists.scss";
+@import "../../.meteor/local/build/programs/web.browser/packages/juliancwirko_zf5/scss/foundation/components/type.scss";
+
+html {
+    text-align: center;
+}
+
+#app {
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+}
+
 .items {
     .item {
         transition: all 0.2s;

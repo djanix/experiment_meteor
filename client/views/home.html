@@ -1,23 +1,28 @@
 <template name="main">
-    {{#if currentUser}}
-        <p>hello, <strong>{{currentUser.username}}</strong></p>
-        <button>Click Me</button>
-        <p>You've pressed the button {{counter}} times.</p>
+    <div data-view="home">
+        {{#if currentUser}}
+            <p>Hello, <strong>{{currentUser.username}}</strong></p>
+            <p>Your current top score is: <strong>{{topScore}}pts</strong></p>
 
-        <div class="items">
-            <button class="item item1">item #1</button>
-            <button class="item item2">item #2</button>
-            <button class="item item3">item #3</button>
-            <button class="item item4">item #4</button>
-        </div>
+            <button>Click Me</button>
 
-        <h3>Leaderboard:</h3>
+            <p>You've pressed the button {{counter}} times.</p>
 
-        {{#each scores}}
-            <strong>{{owner}}:</strong> {{score}}pts - {{time}}<br/>
-        {{/each}}
-    {{/if}}
+            <div class="items">
+                <button class="item item1">item #1</button>
+                <button class="item item2">item #2</button>
+                <button class="item item3">item #3</button>
+                <button class="item item4">item #4</button>
+            </div>
 
-    <br/><br/>
-    {{> loginButtons}}
+            <h3>Leaderboard:</h3>
+
+            {{#each scores}}
+                <strong>{{username}}:</strong> {{score}}pts - {{time}}<br/>
+            {{/each}}
+        {{/if}}
+
+        <br/><br/>
+        {{> loginButtons}}
+    </div>
 </template>
