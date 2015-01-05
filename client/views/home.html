@@ -1,12 +1,12 @@
 <template name="main">
-    <div data-view="home">
+    <div data-view="home" class="mainContent {{gameActive}}">
         {{#if currentUser}}
             <p>Hello, <strong>{{currentUser.username}}</strong></p>
             <p>Your current top score is: <strong>{{topScore}}pts</strong></p>
 
-            <button>Click Me</button>
+            <button class="start">{{#if gameActive}}Pause{{else}}Go!{{/if}}</button>
 
-            <p>You've pressed the button {{counter}} times.</p>
+            <p>You are on the sequence #{{counter}}.</p>
 
             <div class="items">
                 <button class="item item1">item #1</button>
@@ -18,7 +18,7 @@
             <h3>Leaderboard:</h3>
 
             {{#each scores}}
-                <strong>{{username}}:</strong> {{score}}pts - {{time}}<br/>
+                <strong>{{username}}:</strong> {{score}} - {{time}}<br/>
             {{/each}}
         {{/if}}
 

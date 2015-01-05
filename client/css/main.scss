@@ -24,3 +24,26 @@ html {
         color: white;
     }
 }
+
+button.start {
+    background-color: green;
+}
+
+button.item {
+    background-color: lightgray;
+    color: darkgrey;
+    cursor: default;
+    outline: 0;
+}
+
+.is-active {
+    button.start {
+        background-color: red;
+    }
+
+    .item {
+        background-color: #007095;
+        color: white;
+        cursor: pointer;
+    }
+}
