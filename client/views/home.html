@@ -2,11 +2,13 @@
     <div data-view="home" class="mainContent {{gameActive}}">
         {{#if currentUser}}
             <p>Hello, <strong>{{currentUser.username}}</strong></p>
-            <p>Your current top score is: <strong>{{topScore}}pts</strong></p>
+            <p>Your current top sequence is: <strong>{{topScore}}</strong></p>
 
             <button class="start">{{#if gameActive}}Pause{{else}}Go!{{/if}}</button>
 
             <p>You are on the sequence #{{counter}}.</p>
+
+            <p>Current sequence: {{currentSequence}}</p>
 
             <div class="items">
                 <button class="item item1">item #1</button>

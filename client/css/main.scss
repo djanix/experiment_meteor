@@ -45,5 +45,9 @@ button.item {
         background-color: #007095;
         color: white;
         cursor: pointer;
+
+        &:active {
+            background-color: lighten(#007095, 20%);
+        }
     }
 }
