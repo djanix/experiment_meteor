@@ -10,18 +10,8 @@
 
             <p>Current sequence: {{currentSequence}}</p>
 
-            <div class="items">
-                <button class="item item1">1</button>
-                <button class="item item2">2</button>
-                <button class="item item3">3</button>
-                <button class="item item4">4</button>
-            </div>
-
-            <h3>Leaderboard:</h3>
-
-            {{#each scores}}
-                <strong>{{username}}:</strong> {{score}} - {{time}}<br/>
-            {{/each}}
+            {{> buttons}}
+            {{> leaderboard}}
         {{/if}}
 
         <br/><br/>

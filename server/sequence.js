@@ -1,8 +1,14 @@
+var nbChoices = 4;
+
 Meteor.methods({
-    createSequence: function (userId, choices) {
+    getNbOfChoices: function () {
+        return nbChoices;
+    },
+
+    createSequence: function (userId) {
         var newSequence = Meteor.call('getPreviousSequence', userId);
 
-        newSequence.push(Math.floor(Math.random() * choices));
+        newSequence.push(Math.floor(Math.random() * nbChoices));
 
         Scores.update({
             owner: userId

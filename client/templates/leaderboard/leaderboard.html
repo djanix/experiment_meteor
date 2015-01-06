@@ -1,0 +1,7 @@
+<template name="leaderboard">
+    <h3>Leaderboard:</h3>
+
+    {{#each scores}}
+        <strong>{{username}}:</strong> {{score}} - {{time}}<br/>
+    {{/each}}
+</template>
