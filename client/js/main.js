@@ -7,7 +7,11 @@ var userSequence = [];
 var sequenceGenerated = false;
 
 Template.main.rendered = function () {
-    //Meteor.call('removeAllScores');
+    if (!this.rendered) {
+        //Meteor.call('removeAllScores');
+        Meteor.call('resetSequence', Meteor.userId());
+        this.rendered = true;
+    }
 };
 
 Template.main.helpers({
@@ -32,7 +36,13 @@ Template.main.helpers({
     },
 
     currentSequence: function () {
-        return Session.get("currentSequence");
+        var sequence = [];
+
+        $.each(Session.get("currentSequence"), function (index, value) {
+            sequence[index] = value + 1;
+        });
+
+        return sequence;
     }
 });
 
@@ -55,7 +65,7 @@ Template.main.events({
                         owner: Meteor.userId(),
                         username: userData.username
                     }, function () {
-                        Meteor.call('createSequence', Meteor.userId(), $('.item').length, Session.get("counter") + 1, function (err, data) {
+                        Meteor.call('createSequence', Meteor.userId(), $('.item').length, function (err, data) {
                             if (err) { return console.log(err); }
                             Session.set("currentSequence", data);
                             sequenceGenerated = true;
@@ -63,8 +73,7 @@ Template.main.events({
                     });
                 } else {
                     Session.set("topScore", data);
-
-                    Meteor.call('createSequence', Meteor.userId(), $('.item').length, Session.get("counter") + 1, function (err, data) {
+                    Meteor.call('createSequence', Meteor.userId(), $('.item').length, function (err, data) {
                         if (err) { return console.log(err); }
                         Session.set("currentSequence", data);
                         sequenceGenerated = true;
@@ -90,9 +99,18 @@ Template.main.events({
 
             Session.set("gameActive", !Session.get("gameActive"));
             Session.set("currentSequence", []);
-
             userSequence = [];
             sequenceGenerated = false;
+
+        } else if (userSequence.length >= Session.get("currentSequence").length) {
+            Session.set("gameActive", !Session.get("gameActive"));
+            Session.set("counter", 0);
+            Session.set("currentSequence", []);
+
+            Meteor.call('resetSequence', Meteor.userId());
+
+            sequenceGenerated = false;
+            userSequence = [];
         }
     }
 });

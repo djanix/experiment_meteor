@@ -16,7 +16,15 @@ html {
 
 .items {
     .item {
+        background-color: lightgray;
+        border-radius: 50%;
+        color: darkgrey;
+        cursor: default;
+        height: 70px;
+        outline: 0;
+        padding: 0;
         transition: all 0.2s;
+        width: 70px;
     }
 
     .is-active {
@@ -27,13 +35,6 @@ html {
 
 button.start {
     background-color: green;
-}
-
-button.item {
-    background-color: lightgray;
-    color: darkgrey;
-    cursor: default;
-    outline: 0;
 }
 
 .is-active {
@@ -47,7 +48,8 @@ button.item {
         cursor: pointer;
 
         &:active {
-            background-color: lighten(#007095, 20%);
+            background-color: lighten(#007095, 15%);
+            box-shadow: inset 0 0 35px 4px rgba(255, 255, 255, 0.35);
         }
     }
 }

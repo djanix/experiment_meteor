@@ -1,19 +1,39 @@
 Meteor.methods({
-    createSequence: function (userId, choices, sequenceLength) {
-        var sequence = [];
+    createSequence: function (userId, choices) {
+        var newSequence = Meteor.call('getPreviousSequence', userId);
 
-        for (var i = 0; i < sequenceLength; i++) {
-            sequence[i] = Math.floor(Math.random() * choices);
-        }
+        newSequence.push(Math.floor(Math.random() * choices));
 
         Scores.update({
             owner: userId
         }, {
             $set: {
-                currentSequence: sequence
+                currentSequence: newSequence
             }
         });
 
-        return sequence;
+        return newSequence;
+    },
+
+    resetSequence: function (userId) {
+        Scores.update({
+            owner: userId
+        }, {
+            $set: {
+                currentSequence: []
+            }
+        });
+    },
+
+    getPreviousSequence: function (userId) {
+        var scoreObj = Scores.findOne({
+            owner: userId
+        });
+
+        if (!scoreObj.currentSequence) {
+            scoreObj.currentSequence = [];
+        }
+
+        return scoreObj.currentSequence;
     }
 });
